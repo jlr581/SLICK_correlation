@@ -1,0 +1,27 @@
+#system variables
+# gnu fortran compiler
+f90 = gfortran
+fflags = -fimplicit-none -ffree-line-length-none -O3 
+
+# should not need to edit below this line
+object_list = correlation.o example1.o
+module_list = correlation_mod.mod
+rm_lst = $(object_list) $(module_list) example1
+
+all : example1
+
+example1 : $(object_list)
+	$(f90) -o $@ $^ $(fflags)
+
+example1.o : example1.f90 correlation.o
+	$(f90) -c $(fflags) $<
+
+correlation.o : correlation.f90
+	$(f90) -c $(fflags) $<
+
+.PHONY: clean
+clean:
+	-@rm -f $(rm_lst)
+
+
+

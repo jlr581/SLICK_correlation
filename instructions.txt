@@ -1,0 +1,47 @@
+Instructions for the compilation and usage of the code for Roberts et al
+(submitted), Integral correlation for uneven and differently sampled
+data: Application to the Law Dome Antarctic climate record, Nature
+Scientific Reports
+
+Compilation (fortran source code version only)
+===========
+Makefiles are provided for both the intel ifort and gnu gfortran
+compilers.  Type "make -f Makefile.ifort" or "make -f Makefile.gfortran"
+to compile the text case example.
+
+USAGE
+=====
+Fortran
+-------
+Run the code as per your operating system (for *unix operating systems
+type ./example1).  The program will read in the 2 input text files
+"test_series1.txt" and "test_series2.txt" and calculate the SLICK
+correlation coefficient using the default scale parameter of 0.4.
+Sample output is provided in the file "example1.out"
+
+MATLAB
+------
+The MATLAB version is called as a function with the time series data
+and optional scale parameter passed as arguments.
+
+To run the test example for a *unix operating systems type
+matlab example1.m
+
+example output is given in "example1.out"
+
+Python
+------
+The python version is using a python interpreter from the example1.py
+script as:
+
+python example1.py [-h]
+
+Sample output is given in the file "example1.out"
+
+Details of the arguments can be output using the -h option and outputs
+the following below
+
+Call the cslick correlation function as follows:
+cslick=correlation(x1,y1,x2,y2,hc)
+where (x1,y1) and (x2,y2) are two differently and unevenly sampled series to be correlated, in this implementation these are numpy arrays. Optional argument hc (default=0.4) is a coefficient to tune  how closely data from the two series must be to be included in the calculation.
+
